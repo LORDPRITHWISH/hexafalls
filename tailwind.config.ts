@@ -82,6 +82,10 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        twinkle: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
+        },
         "accordion-down": {
           from: {
             height: "0",
@@ -209,6 +213,7 @@ export default {
         code: ["Source Code Pro", "monospace"],
         sans: ["Inter", "sans-serif"],
       },
+      twinkle: "twinkle 2s infinite",
       boxShadow: {
         neon: '0 0 5px theme("colors.gravity.yellow"), 0 0 20px theme("colors.gravity.gold")',
         journal:

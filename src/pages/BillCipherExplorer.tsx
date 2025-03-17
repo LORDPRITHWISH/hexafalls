@@ -1,7 +1,6 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import BillCipher3D from '@/components/BillCipher3D';
 import Footer from '@/components/Footer';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Info, Sparkles, RotateCcw } from 'lucide-react';

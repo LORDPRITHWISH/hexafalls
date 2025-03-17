@@ -20,7 +20,7 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({
   return (
     <div 
       className={cn(
-        'bg-gravity-navy/30 border border-white/10 rounded-xl overflow-hidden transition-all duration-700',
+        ' border border-white/10 rounded-xl overflow-hidden transition-all duration-700',
         'hover:border-gravity-gold/30 hover:bg-gravity-navy/40 group',
         'transform opacity-0 translate-y-8',
         isVisible ? 'opacity-100 translate-y-0' : ''

@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useEffect, useState, useRef } from "react"
-import { cn } from "@/lib/utils"
-import { ChevronDown } from "lucide-react"
-import { LiaDiscord } from "react-icons/lia"
-import { FaQuestionCircle } from "react-icons/fa" // Importing a question mark icon
+import type React from "react";
+import { useEffect, useState, useRef } from "react";
+import { cn } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
+import { LiaDiscord } from "react-icons/lia";
+import { FaQuestionCircle } from "react-icons/fa"; // Importing a question mark icon
 
 const Hero: React.FC = () => {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [isHovered, setIsHovered] = useState(false)
-  const [showCipherGuide, setShowCipherGuide] = useState(false)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const glitchTextRef = useRef<HTMLDivElement>(null)
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [showCipherGuide, setShowCipherGuide] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const glitchTextRef = useRef<HTMLDivElement>(null);
 
   // Bill Cipher alphabet mapping
   const cipherMap: Record<string, string> = {
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
     X: "X",
     Y: "⅄",
     Z: "Z",
-  }
+  };
 
   // Convert text to Bill Cipher
   const convertToCipher = (text: string) => {
@@ -50,115 +50,115 @@ const Hero: React.FC = () => {
       .toUpperCase()
       .split("")
       .map((char) => {
-        return cipherMap[char] || char
+        return cipherMap[char] || char;
       })
-      .join("")
-  }
+      .join("");
+  };
 
   useEffect(() => {
-    setIsLoaded(true)
+    setIsLoaded(true);
 
     // TV static effect
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
     // Set canvas dimensions
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
 
-    resizeCanvas()
-    window.addEventListener("resize", resizeCanvas)
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
 
     // Create TV static animation
-    let animationFrameId: number
+    let animationFrameId: number;
     const renderStatic = () => {
-      if (!ctx) return
+      if (!ctx) return;
 
       // Semi-transparent black overlay to make the static subtle
-      ctx.fillStyle = "rgba(0, 0, 0, 0.4)"
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Draw static noise
       for (let i = 0; i < canvas.width * canvas.height * 0.05; i++) {
-        const x = Math.random() * canvas.width
-        const y = Math.random() * canvas.height
-        const grayValue = Math.random() * 255
-        const alpha = Math.random() * 0.05 + 0.05 // Keep it subtle
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const grayValue = Math.random() * 255;
+        const alpha = Math.random() * 0.05 + 0.05; // Keep it subtle
 
-        ctx.fillStyle = `rgba(${grayValue}, ${grayValue}, ${grayValue}, ${alpha})`
-        ctx.fillRect(x, y, 2, 2)
+        ctx.fillStyle = `rgba(${grayValue}, ${grayValue}, ${grayValue}, ${alpha})`;
+        ctx.fillRect(x, y, 2, 2);
       }
 
       // Occasional glitch lines
       if (Math.random() > 0.95) {
-        const y = Math.random() * canvas.height
-        const height = Math.random() * 10 + 2
-        ctx.fillStyle = `rgba(0, 255, 255, ${Math.random() * 0.2})`
-        ctx.fillRect(0, y, canvas.width, height)
+        const y = Math.random() * canvas.height;
+        const height = Math.random() * 10 + 2;
+        ctx.fillStyle = `rgba(0, 255, 255, ${Math.random() * 0.2})`;
+        ctx.fillRect(0, y, canvas.width, height);
       }
 
-      animationFrameId = requestAnimationFrame(renderStatic)
-    }
+      animationFrameId = requestAnimationFrame(renderStatic);
+    };
 
-    renderStatic()
+    renderStatic();
 
     // Glitch text effect
     const glitchText = () => {
-      if (!glitchTextRef.current) return
+      if (!glitchTextRef.current) return;
 
-      const element = glitchTextRef.current
-      const originalText = "HexaFalls"
-      const cipherText = convertToCipher("HexaFalls")
+      const element = glitchTextRef.current;
+      const originalText = "HexaFalls";
+      const cipherText = convertToCipher("HexaFalls");
 
       // Random glitch effect
       if (Math.random() > 0.7) {
-        element.classList.add("glitching")
-        element.textContent = Math.random() > 0.5 ? originalText : cipherText
+        element.classList.add("glitching");
+        element.textContent = Math.random() > 0.5 ? originalText : cipherText;
 
-        setTimeout(
-          () => {
-            element.classList.remove("glitching")
-            element.textContent = originalText
-          },
-          Math.random() * 200 + 50,
-        )
+        setTimeout(() => {
+          element.classList.remove("glitching");
+          element.textContent = originalText;
+        }, Math.random() * 200 + 50);
       }
-    }
+    };
 
-    const glitchInterval = setInterval(glitchText, 2000)
+    const glitchInterval = setInterval(glitchText, 2000);
 
     return () => {
-      setIsLoaded(false)
-      cancelAnimationFrame(animationFrameId)
-      clearInterval(glitchInterval)
-      window.removeEventListener("resize", resizeCanvas)
-    }
-  }, [])
+      setIsLoaded(false);
+      cancelAnimationFrame(animationFrameId);
+      clearInterval(glitchInterval);
+      window.removeEventListener("resize", resizeCanvas);
+    };
+  }, []);
 
   const scrollToAbout = () => {
-    const aboutSection = document.getElementById("about")
+    const aboutSection = document.getElementById("about");
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" })
+      aboutSection.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* TV Static Canvas */}
-      <canvas ref={canvasRef} className="absolute inset-0 z-10 opacity-30 pointer-events-none" />
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 z-10 opacity-30 pointer-events-none"
+      />
 
       {/* Background */}
       <div className="absolute inset-0 z-0">
-        <img
+        {/* <img
           src="/GF/the-mystery-shack-gravity-falls-moewalls-com.gif"
           alt="Mystery Shack from Gravity Falls"
           className="absolute inset-0 w-full h-full object-cover"
-        />
+        /> */}
         <div className="absolute inset-0 bg-black opacity-60"></div>
       </div>
 
@@ -166,7 +166,7 @@ const Hero: React.FC = () => {
       <div
         className={cn(
           "absolute w-20 h-20 top-1/4 left-1/4 opacity-0 transition-opacity duration-1000",
-          isLoaded ? "opacity-20 animate-float" : "",
+          isLoaded ? "opacity-20 animate-float" : ""
         )}
       >
         <div className="w-full h-full rounded-full border border-green-500/30 rotate-45"></div>
@@ -175,22 +175,34 @@ const Hero: React.FC = () => {
       <div
         className={cn(
           "absolute w-32 h-32 bottom-1/4 right-1/3 opacity-0 transition-opacity duration-1000 delay-300",
-          isLoaded ? "opacity-10 animate-float" : "",
+          isLoaded ? "opacity-10 animate-float" : ""
         )}
       >
         <svg viewBox="0 0 100 100" className="w-full h-full text-green-400/30">
-          <path d="M50 10 L90 50 L50 90 L10 50 Z" stroke="currentColor" strokeWidth="2" fill="none" />
+          <path
+            d="M50 10 L90 50 L50 90 L10 50 Z"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+          />
         </svg>
       </div>
 
       <div
         className={cn(
           "absolute w-24 h-24 top-1/3 right-1/4 opacity-0 transition-opacity duration-1000 delay-500",
-          isLoaded ? "opacity-15 animate-float" : "",
+          isLoaded ? "opacity-15 animate-float" : ""
         )}
       >
         <svg viewBox="0 0 100 100" className="w-full h-full text-green-300/20">
-          <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="2" fill="none" />
+          <circle
+            cx="50"
+            cy="50"
+            r="40"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+          />
         </svg>
       </div>
 
@@ -198,12 +210,24 @@ const Hero: React.FC = () => {
       <div
         className={cn(
           "absolute w-40 h-40 top-10 right-10 opacity-0 transition-opacity duration-1000 delay-700",
-          isLoaded ? "opacity-30 animate-pulse" : "",
+          isLoaded ? "opacity-30 animate-pulse" : ""
         )}
       >
         <svg viewBox="0 0 100 100" className="w-full h-full text-yellow-400">
-          <path d="M50 10 L90 80 L10 80 Z" stroke="currentColor" strokeWidth="2" fill="none" />
-          <circle cx="50" cy="40" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+          <path
+            d="M50 10 L90 80 L10 80 Z"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+          />
+          <circle
+            cx="50"
+            cy="40"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+          />
         </svg>
       </div>
 
@@ -212,7 +236,7 @@ const Hero: React.FC = () => {
         <div
           className={cn(
             "transform transition-all duration-1000 opacity-0 scale-95",
-            isLoaded ? "opacity-100 scale-100" : "translate-y-4",
+            isLoaded ? "opacity-100 scale-100" : "translate-y-4"
           )}
         >
           <div className="inline-block mb-6">
@@ -221,35 +245,18 @@ const Hero: React.FC = () => {
             </span>
           </div>
 
-          <h1
+          {/* <h1
             ref={glitchTextRef}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 tracking-wide green-glow glitch-text"
+            className="text-4xl md:text-6xl lg:text-8xl text-white mb-4 tracking-wide green-glow glitch-text rubik-glitch-regular"
           >
             HexaFalls
-          </h1>
-
-          <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-8 font-medium cipher-message">
-            <span
-              className="text-yellow-400 cursor-pointer relative"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              {isHovered ? convertToCipher("I AM WATCHING") : "I AM WATCHING"}
-              <FaQuestionCircle
-                className="inline-block ml-2 cursor-pointer"
-                onClick={() => {
-                  console.log("Cipher guide icon clicked") // Debugging
-                  setShowCipherGuide(true)
-                }}
-              />
-            </span>
-          </p>
+          </h1> */}
 
           <div
             className={cn(
               "flex flex-col sm:flex-row gap-4 justify-center items-center",
               "transform transition-all duration-1000 delay-300 opacity-0",
-              isLoaded ? "opacity-100" : "translate-y-4",
+              isLoaded ? "opacity-100" : "translate-y-4"
             )}
           >
             <a
@@ -258,7 +265,7 @@ const Hero: React.FC = () => {
                 "px-8 py-3 rounded-lg font-medium tracking-wide transition-all",
                 "bg-green-500 text-green-950 hover:bg-green-400",
                 "shadow-[0_0_15px_rgba(72,187,120,0.5)] hover:shadow-[0_0_20px_rgba(72,187,120,0.7)]",
-                "transform hover:-translate-y-1",
+                "transform hover:-translate-y-1"
               )}
             >
               Join the Mystery
@@ -269,7 +276,7 @@ const Hero: React.FC = () => {
               className={cn(
                 "px-8 py-3 rounded-lg font-medium tracking-wide transition-all",
                 "bg-transparent text-white hover:text-green-500",
-                "border border-white/20 hover:border-green-500/50 flex items-center space-x-3",
+                "border border-white/20 hover:border-green-500/50 flex items-center space-x-3"
               )}
             >
               <LiaDiscord className="w-6 h-6 mr-2" />
@@ -277,13 +284,30 @@ const Hero: React.FC = () => {
             </a>
           </div>
         </div>
+        <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto mb-8 font-medium cipher-message mt-5">
+          <span
+            className="text-yellow-400 cursor-pointer relative"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {isHovered ? convertToCipher("I AM WATCHING") : "I AM WATCHING"}
+            <FaQuestionCircle
+              className="inline-block ml-2 cursor-pointer"
+              onClick={() => {
+                console.log("Cipher guide icon clicked"); // Debugging
+                setShowCipherGuide(true);
+              }}
+            />
+          </span>
+        </p>
       </div>
-
       {/* Cipher Guide Modal */}
       {showCipherGuide && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
           <div className="bg-black/90 p-8 rounded-lg border border-green-500/20 max-w-2xl">
-            <h2 className="text-2xl font-bold text-green-500 mb-4">Bill Cipher Alphabet Guide</h2>
+            <h2 className="text-2xl font-bold text-green-500 mb-4">
+              Bill Cipher Alphabet Guide
+            </h2>
             <div className="grid grid-cols-5 gap-4">
               {Object.entries(cipherMap).map(([letter, symbol]) => (
                 <div key={letter} className="flex flex-col items-center">
@@ -294,8 +318,8 @@ const Hero: React.FC = () => {
             </div>
             <button
               onClick={() => {
-                console.log("Close button clicked") // Debugging
-                setShowCipherGuide(false)
+                console.log("Close button clicked");
+                setShowCipherGuide(false);
               }}
               className="mt-6 px-4 py-2 bg-green-500 text-green-950 rounded-lg hover:bg-green-400 transition-colors"
             >
@@ -392,7 +416,7 @@ const Hero: React.FC = () => {
         }
       `}</style>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

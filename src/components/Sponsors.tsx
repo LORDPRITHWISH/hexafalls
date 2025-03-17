@@ -100,7 +100,7 @@ const Sponsors: React.FC = () => {
     <section
       id="sponsors"
       ref={sectionRef}
-      className="relative py-20 md:py-28 px-4 md:px-10 bg-gravity-darker/50"
+      className="relative py-20 md:py-28 px-4 md:px-10 "
     >
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-10 z-0">

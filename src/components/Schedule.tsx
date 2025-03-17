@@ -194,10 +194,10 @@ const Schedule: React.FC = () => {
     <section
       id="schedule"
       ref={sectionRef}
-      className="relative py-20 md:py-28 px-4 md:px-10 bg-gravity-navy/20"
+      className="relative py-20 md:py-28 px-4 md:px-10 "
     >
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gravity-blue/5 backdrop-blur-[120px] z-0"></div>
+      <div className="absolute inset-0 b backdrop-blur-[120px] z-0"></div>
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gravity-gold/20 to-transparent"></div>
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gravity-gold/20 to-transparent"></div>
       

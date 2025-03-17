@@ -1,9 +1,27 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&family=Source+Code+Pro:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+Glitch&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'TrajanPro';
+  src: url('/fonts/Qimano-aYxdE.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.TrajanPro{
+  font-family: 'TrajanPro', sans-serif;
+  font-weight: 400;
+  font-variation-settings:
+    "wdth" 100;
+
+}
 
 
 
@@ -20,7 +38,86 @@
   font-family: "Jolly Lodger", system-ui;
   font-weight: 400;
   font-style: normal;
+  
 }
+.rubik-glitch-regular {
+  font-family: "Rubik Glitch", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@layer utilities {
+  .matrix-bg {
+    background: linear-gradient(
+      to bottom,
+      #000000,
+      #0a0a0a 40%,
+      #121212 70%,
+      #1a1a1a 100%
+    );
+    position: relative;
+    overflow: hidden;
+  }
+
+  .matrix-bg::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: 
+      radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+      radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+      radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px),
+      linear-gradient(45deg, transparent 0%, rgba(67, 198, 172, 0.02) 50%, transparent 100%);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 100% 100%;
+    background-position: 0 0, 40px 60px, 130px 270px, 0 0;
+    animation: starTwinkle 8s linear infinite;
+    z-index: 1;
+  }
+
+  .matrix-bg::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(
+      circle at 50% 80%,
+      rgba(74, 222, 128, 0.08) 0%,
+      transparent 70%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .matrix-bg > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  @keyframes starTwinkle {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+  }
+
+  .retro-text {
+    letter-spacing: 2px;
+  }
+
+  .page-transition {
+    position: relative;
+    z-index: 2;
+  }
+}
+
 
 @layer base {
   :root {
