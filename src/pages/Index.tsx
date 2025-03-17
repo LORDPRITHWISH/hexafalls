@@ -52,7 +52,6 @@ const Index = () => {
           <Themes />
           <Prizes />
           <Schedule />
-          <Registration />
           <Sponsors />
           <Collaboration />
           <SpeakersJudges />
@@ -61,7 +60,7 @@ const Index = () => {
         </div>
         <Particles
         className="absolute inset-0 z-0"
-        quantity={100}
+        quantity={500}
         ease={80}
         color={"#ffffff"}
         refresh

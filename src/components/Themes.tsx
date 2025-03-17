@@ -133,7 +133,7 @@ const Themes: React.FC = () => {
       <div className="absolute inset-0 pine-pattern opacity-5 z-0"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className=" mb-16">
+        <div className="mb-16">
           <h2
             className={cn(
               " text-4xl md:text-6xl font-bold text-green-400 retro-text glow-text jolly-lodger-regular",
