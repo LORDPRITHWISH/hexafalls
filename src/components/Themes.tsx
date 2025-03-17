@@ -147,8 +147,8 @@ const Themes: React.FC = () => {
           </h2>
           <p
             className={cn(
-              "text-lg md:text-xl text-white/70 max-w-2xl mx-auto",
-              "transform transition-all duration-700 delay-200",
+              "text-lg md:text-xl mt-4 text-white/70 max-w-2xl",
+              "transform transition-all duration-700 delay-200 TrajanPro",
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"

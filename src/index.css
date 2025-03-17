@@ -59,7 +59,7 @@
     overflow: hidden;
   }
 
-  .matrix-bg::before {
+  /* .matrix-bg::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -75,9 +75,9 @@
     background-position: 0 0, 40px 60px, 130px 270px, 0 0;
     animation: starTwinkle 8s linear infinite;
     z-index: 1;
-  }
+  } */
 
-  .matrix-bg::after {
+  /* .matrix-bg::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -91,7 +91,7 @@
     );
     z-index: 1;
     pointer-events: none;
-  }
+  } */
 
   .matrix-bg > * {
     position: relative;

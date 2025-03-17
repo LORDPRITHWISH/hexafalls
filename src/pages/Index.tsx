@@ -13,6 +13,7 @@ import Feedback from "@/components/Feedback";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import SpaceBackground from "@/components/SpaceBackground";
+import { Particles } from "@/components/magicui/particles";
 
 const Index = () => {
   useEffect(() => {
@@ -58,6 +59,13 @@ const Index = () => {
           <Feedback />
           <FAQ />
         </div>
+        <Particles
+        className="absolute inset-0 z-0"
+        quantity={100}
+        ease={80}
+        color={"#ffffff"}
+        refresh
+      />
       </main>
       <Footer />
     </div>
