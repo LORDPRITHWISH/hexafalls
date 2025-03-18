@@ -249,7 +249,8 @@ const Hero: React.FC = () => {
                 fontSize="1rem"
                 freakOutInterval={4000}
                 freakOutDuration={800}
-                className="tracking-wider px-8 py-3"
+                className="tracking-wider"
+                padclassName="py-3 px-6"
               />
             </a>
             <a

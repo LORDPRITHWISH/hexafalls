@@ -7,6 +7,7 @@ interface RadicalGlitchTitleProps {
   text: string;
   crypticText?: string;
   className?: string;
+  padclassName?: string;
   fontSize?: string;
   primaryColor?: string;
   secondaryColor?: string;
@@ -19,6 +20,7 @@ export default function RadicalGlitchTitle({
   text,
   crypticText,
   className = "",
+  padclassName = "",
   fontSize = "5rem",
   primaryColor = "#00FFFF",
   secondaryColor = "#FF00FF",
@@ -211,10 +213,10 @@ export default function RadicalGlitchTitle({
         ease: "easeInOut",
       }}
     >
-      <div className="relative">
+      <div className={`relative overflow-hidden ${padclassName}`}>
         {/* Main text with glitch effects */}
         <div
-          className="relative z-10 font-bold"
+          className="relative z-10 font-bold "
           style={{
             textShadow: `0 0 10px ${primaryColor}, 0 0 20px ${primaryColor}80, 0 0 30px ${primaryColor}40`,
             color: "white",
@@ -225,7 +227,7 @@ export default function RadicalGlitchTitle({
         >
           {/* RGB Shift Effect - Red Channel */}
           <div
-            className="absolute top-0 left-0 w-full h-full mix-blend-screen opacity-80"
+            className="absolute top-0 left-0 w-full h-full mix-blend-screen opacity-80 "
             style={{
               color: "rgb(255,0,0)",
               transform: `translate(${rgbShift.r}px, 0)`,
