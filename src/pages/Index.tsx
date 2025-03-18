@@ -43,19 +43,17 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen matrix-bg">
+    <div className="min-h-screen ">
       <Navbar />
       <main className="page-transition">
-        {/* <Hero /> */}
-        <div className="">
+        <Hero />
+        <div className="matrix-bg">
           <About />
           <Themes />
           <Prizes />
           <Schedule />
           <Sponsors />
-          <Collaboration />
           <SpeakersJudges />
-          <Feedback />
           <FAQ />
         </div>
         <Particles

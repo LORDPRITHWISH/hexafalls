@@ -1,11 +1,17 @@
 import React from "react";
 import { Binary } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-function App() {
+function About({ isVisible, delay }) {
   return (
-    <div className="min-h-screen  text-white">
+    <div className=" text-white">
       <div className="container mx-auto px-4 py-16">
         <div className="flex flex-col gap-8">
+          <div className="absolute left-0 top-2 w-6 h-6 rounded-full bg-gravity-gold/10 border border-green-400/30 group-hover:bg-green-400/20 transition-colors">
+            <div className="absolute left-1/2 top-1/2 w-2 h-2 rounded-full bg-green-400 transform -translate-x-1/2 -translate-y-1/2"></div>
+          </div>
+
+          <div className="absolute left-3 top-10 h-full w-px bg-green-400/20 group-last:hidden"></div>
           <div className="flex items-center gap-4">
             <h1 className="text-4xl md:text-6xl font-bold text-green-400 retro-text glow-text jolly-lodger-regular">
               01. ABOUT HEXAFALLS
@@ -47,4 +53,4 @@ function App() {
   );
 }
 
-export default App;
+export default About;

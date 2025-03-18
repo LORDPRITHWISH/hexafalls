@@ -131,7 +131,7 @@ const Footer: React.FC = () => {
             &copy; {new Date().getFullYear()} GravityHack. All secrets reserved.
           </p>
           <p className="text-white/50 text-sm mt-2 md:mt-0 flex items-center">
-            Made with <Heart size={14} className="text-red-500 mx-1" /> in the Mystery Shack
+            Made with <Heart size={14} className="text-red-500 mx-1" /> in the Zenux Studios
           </p>
         </div>
       </div>
