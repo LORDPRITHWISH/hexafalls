@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 interface RadicalGlitchTitleProps {
-  text: string
-  crypticText?: string
-  className?: string
-  fontSize?: string
-  primaryColor?: string
-  secondaryColor?: string
-  freakOutInterval?: number
-  freakOutDuration?: number
-  symbolSet?: string
+  text: string;
+  crypticText?: string;
+  className?: string;
+  fontSize?: string;
+  primaryColor?: string;
+  secondaryColor?: string;
+  freakOutInterval?: number;
+  freakOutDuration?: number;
+  symbolSet?: string;
 }
 
 export default function RadicalGlitchTitle({
@@ -26,20 +26,20 @@ export default function RadicalGlitchTitle({
   freakOutDuration = 800,
   symbolSet = "ᚠᚡᚢᚣᚤᚥᚦᚧᚨᚩᚪᚫᚬᚭᚮᚯᚰᚱᚲᚳᚴᚵᚶᚷᚸᚹᚺᚻᚼᚽᚾᚿᛀᛁᛂᛃᛄᛅᛆᛇᛈᛉᛊᛋᛌᛍᛎᛏᛐᛑᛒᛓᛔᛕᛖᛗᛘᛙᛚᛛᛜᛝᛞᛟᛠᛡᛢᛣᛤᛥᛦᛧᛨᛩᛪ᛫᛬᛭ᛮᛯᛰᛱᛲᛳᛴᛵᛶᛷᛸ",
 }: RadicalGlitchTitleProps) {
-  const [displayText, setDisplayText] = useState<string[]>(text.split(""))
-  const [isFreakingOut, setIsFreakingOut] = useState(false)
-  const [glitchLevel, setGlitchLevel] = useState(0) // 0-10 scale
-  const [sliceOffset, setSliceOffset] = useState({ x: 0, y: 0 })
-  const [rgbShift, setRgbShift] = useState({ r: 0, g: 0, b: 0 })
-  const [shake, setShake] = useState({ x: 0, y: 0, rotate: 0 })
-  const [clips, setClips] = useState<string[]>([])
-  const [noiseOpacity, setNoiseOpacity] = useState(0.2)
-  const [scanlineOffset, setScanlineOffset] = useState(0)
-  const [slices, setSlices] = useState<{ top: number; height: number; offset: number }[]>([])
+  const [displayText, setDisplayText] = useState<string[]>(text.split(""));
+  const [isFreakingOut, setIsFreakingOut] = useState(false);
+  const [glitchLevel, setGlitchLevel] = useState(0); // 0-10 scale
+  const [sliceOffset, setSliceOffset] = useState({ x: 0, y: 0 });
+  const [rgbShift, setRgbShift] = useState({ r: 0, g: 0, b: 0 });
+  const [shake, setShake] = useState({ x: 0, y: 0, rotate: 0 });
+  const [clips, setClips] = useState<string[]>([]);
+  const [noiseOpacity, setNoiseOpacity] = useState(0.2);
+  const [scanlineOffset, setScanlineOffset] = useState(0);
+  const [slices, setSlices] = useState<{ top: number; height: number; offset: number }[]>([]);
 
-  const glitchIntervalRef = useRef<NodeJS.Timeout | null>(null)
-  const freakOutIntervalRef = useRef<NodeJS.Timeout | null>(null)
-  const freakOutTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const glitchIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const freakOutIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const freakOutTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Generate cryptic text if not provided
   const actualCrypticText =
@@ -47,107 +47,101 @@ export default function RadicalGlitchTitle({
     text
       .split("")
       .map(() => symbolSet[Math.floor(Math.random() * symbolSet.length)])
-      .join("")
+      .join("");
 
   // Initialize effects
   useEffect(() => {
-    startGlitchEffects()
-    setupFreakOutInterval()
+    startGlitchEffects();
+    setupFreakOutInterval();
 
     return () => {
-      clearAllIntervals()
-    }
-  }, [text])
+      clearAllIntervals();
+    };
+  }, [text]);
 
   const clearAllIntervals = () => {
-    if (glitchIntervalRef.current) clearInterval(glitchIntervalRef.current)
-    if (freakOutIntervalRef.current) clearInterval(freakOutIntervalRef.current)
-    if (freakOutTimeoutRef.current) clearTimeout(freakOutTimeoutRef.current)
-  }
+    if (glitchIntervalRef.current) clearInterval(glitchIntervalRef.current);
+    if (freakOutIntervalRef.current) clearInterval(freakOutIntervalRef.current);
+    if (freakOutTimeoutRef.current) clearTimeout(freakOutTimeoutRef.current);
+  };
 
   const setupFreakOutInterval = () => {
     // Clear any existing interval
-    if (freakOutIntervalRef.current) clearInterval(freakOutIntervalRef.current)
+    if (freakOutIntervalRef.current) clearInterval(freakOutIntervalRef.current);
 
     // Set up new interval for freak-outs
-    freakOutIntervalRef.current = setInterval(
-      () => {
-        triggerFreakOut()
-      },
-      freakOutInterval + Math.random() * 2000,
-    ) // Add some randomness
-  }
+    freakOutIntervalRef.current = setInterval(() => {
+      triggerFreakOut();
+    }, freakOutInterval + Math.random() * 2000); // Add some randomness
+  };
 
   const triggerFreakOut = () => {
-    setIsFreakingOut(true)
-    setGlitchLevel(10) // Max glitch during freak-out
+    setIsFreakingOut(true);
+    setGlitchLevel(10); // Max glitch during freak-out
 
     // Set timeout to end freak-out
-    freakOutTimeoutRef.current = setTimeout(
-      () => {
-        setIsFreakingOut(false)
-        setGlitchLevel(Math.random() * 3) // Return to low glitch
-      },
-      freakOutDuration + Math.random() * 500,
-    ) // Add some randomness
-  }
+    freakOutTimeoutRef.current = setTimeout(() => {
+      setIsFreakingOut(false);
+      setGlitchLevel(Math.random() * 3); // Return to low glitch
+    }, freakOutDuration + Math.random() * 500); // Add some randomness
+  };
 
   const startGlitchEffects = () => {
     // Clear any existing interval
-    if (glitchIntervalRef.current) clearInterval(glitchIntervalRef.current)
+    if (glitchIntervalRef.current) clearInterval(glitchIntervalRef.current);
 
     // Set interval for continuous glitch effects
     glitchIntervalRef.current = setInterval(() => {
-      updateGlitchEffects()
-    }, 50) // Update frequently for smooth effects
-  }
+      updateGlitchEffects();
+    }, 50); // Update frequently for smooth effects
+  };
 
   const updateGlitchEffects = () => {
-    const intensity = isFreakingOut ? 1 : 0.3
-    const baseGlitchLevel = isFreakingOut ? 10 : glitchLevel
+    const intensity = isFreakingOut ? 1 : 0.3;
+    const baseGlitchLevel = isFreakingOut ? 10 : glitchLevel;
 
     // Update text display with random glitches
     setDisplayText(
       text.split("").map((char, index) => {
         // During freak-out, show cryptic text
         if (isFreakingOut && Math.random() < 0.7) {
-          return actualCrypticText[index] || symbolSet[Math.floor(Math.random() * symbolSet.length)]
+          return actualCrypticText[index] || symbolSet[Math.floor(Math.random() * symbolSet.length)];
         }
 
         // Random character replacement even in normal mode
         if (Math.random() < 0.05 * intensity) {
           // 5% chance to replace with a random character
-          const pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/"
-          return pool[Math.floor(Math.random() * pool.length)]
+          const pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/";
+          return pool[Math.floor(Math.random() * pool.length)];
         }
 
         // Random symbol replacement
         if (Math.random() < 0.02 * intensity) {
-          return symbolSet[Math.floor(Math.random() * symbolSet.length)]
+          return symbolSet[Math.floor(Math.random() * symbolSet.length)];
         }
 
-        return char
-      }),
-    )
+        return char;
+      })
+    );
 
     // RGB shift effect (more extreme during freak-out)
-    const maxShift = baseGlitchLevel * 0.5
+    const maxShift = baseGlitchLevel * 0.5;
     setRgbShift({
       r: (Math.random() * 2 - 1) * maxShift,
       g: (Math.random() * 2 - 1) * maxShift,
       b: (Math.random() * 2 - 1) * maxShift,
-    })
+    });
 
     // Screen shake effect (more violent during freak-out)
-    const maxShake = baseGlitchLevel * 0.3
+    const maxShake = baseGlitchLevel * 0.3;
     if (Math.random() < 0.2 * intensity) {
       setShake({
         x: (Math.random() * 2 - 1) * maxShake,
         y: (Math.random() * 2 - 1) * maxShake,
         rotate: (Math.random() * 2 - 1) * maxShake * 0.5,
-      })
+      });
     } else {
-      setShake({ x: 0, y: 0, rotate: 0 })
+      setShake({ x: 0, y: 0, rotate: 0 });
     }
 
     // Slice offset effect (horizontal shift of slices)
@@ -155,52 +149,52 @@ export default function RadicalGlitchTitle({
       setSliceOffset({
         x: (Math.random() * 2 - 1) * baseGlitchLevel * 2,
         y: (Math.random() * 2 - 1) * baseGlitchLevel,
-      })
+      });
     } else {
-      setSliceOffset({ x: 0, y: 0 })
+      setSliceOffset({ x: 0, y: 0 });
     }
 
     // Generate clip paths for glitch slices
     if (Math.random() < 0.1 * intensity || isFreakingOut) {
-      const numClips = Math.floor(Math.random() * 3) + (isFreakingOut ? 3 : 0)
-      const newClips = []
+      const numClips = Math.floor(Math.random() * 3) + (isFreakingOut ? 3 : 0);
+      const newClips = [];
 
       for (let i = 0; i < numClips; i++) {
-        const x1 = Math.random() * 100
-        const x2 = Math.random() * 100
-        const y1 = Math.random() * 100
-        const y2 = Math.random() * 100
+        const x1 = Math.random() * 100;
+        const x2 = Math.random() * 100;
+        const y1 = Math.random() * 100;
+        const y2 = Math.random() * 100;
 
-        newClips.push(`polygon(${x1}% ${y1}%, ${x2}% ${y1}%, ${x2}% ${y2}%, ${x1}% ${y2}%)`)
+        newClips.push(`polygon(${x1}% ${y1}%, ${x2}% ${y1}%, ${x2}% ${y2}%, ${x1}% ${y2}%)`);
       }
 
-      setClips(newClips)
+      setClips(newClips);
     } else if (Math.random() < 0.7 && !isFreakingOut) {
-      setClips([])
+      setClips([]);
     }
 
     // Generate horizontal slices
     if (Math.random() < 0.2 * intensity || isFreakingOut) {
-      const numSlices = Math.floor(Math.random() * 5) + (isFreakingOut ? 5 : 2)
-      const newSlices = []
+      const numSlices = Math.floor(Math.random() * 5) + (isFreakingOut ? 5 : 2);
+      const newSlices = [];
 
       for (let i = 0; i < numSlices; i++) {
-        const top = Math.random() * 100
-        const height = Math.random() * 10 + 5
-        const offset = (Math.random() * 2 - 1) * baseGlitchLevel * 3
+        const top = Math.random() * 100;
+        const height = Math.random() * 10 + 5;
+        const offset = (Math.random() * 2 - 1) * baseGlitchLevel * 3;
 
-        newSlices.push({ top, height, offset })
+        newSlices.push({ top, height, offset });
       }
 
-      setSlices(newSlices)
+      setSlices(newSlices);
     } else if (Math.random() < 0.6 && !isFreakingOut) {
-      setSlices([])
+      setSlices([]);
     }
 
     // Update noise and scanline effects
-    setNoiseOpacity(0.1 + Math.random() * 0.1 + (isFreakingOut ? 0.2 : 0))
-    setScanlineOffset(scanlineOffset + 0.5)
-  }
+    setNoiseOpacity(0.1 + Math.random() * 0.1 + (isFreakingOut ? 0.2 : 0));
+    setScanlineOffset(scanlineOffset + 0.5);
+  };
 
   return (
     <motion.div
@@ -220,11 +214,11 @@ export default function RadicalGlitchTitle({
       <div className="relative">
         {/* Main text with glitch effects */}
         <div
-          className="relative z-10 font-bold rubik-glitch-regular"
+          className="relative z-10 font-bold"
           style={{
             textShadow: `0 0 10px ${primaryColor}, 0 0 20px ${primaryColor}80, 0 0 30px ${primaryColor}40`,
             color: "white",
-            // fontFamily: "monospace",
+            fontFamily: "monospace",
             letterSpacing: "0.05em",
             filter: `blur(${isFreakingOut ? Math.random() * 2 : 0}px)`,
           }}
@@ -386,4 +380,3 @@ export default function RadicalGlitchTitle({
     </motion.div>
   );
 }
-

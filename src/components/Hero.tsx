@@ -9,6 +9,7 @@ import RadicalGlitchTitle from "./RadicalGlitchTitle";
 import GlitchText from "./GlitchText";
 import GlitchHeading from "./GlitchHeading";
 import Newglitch from "./Newglitch";
+import GlichTitle from "./GlichTitle";
 
 const Hero: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -206,7 +207,8 @@ const Hero: React.FC = () => {
             HexaFalls
           </h1> */}
 
-          <Newglitch>HexaFalls</Newglitch>
+          {/* <Newglitch /> */}
+          <GlichTitle text="HexaFalls" />
 
           {/* <GlitchHeading text="HexaFalls" className="rubik-glitch-regular" /> */}
           {/* <GlitchHeading
@@ -223,17 +225,6 @@ const Hero: React.FC = () => {
             HexaFalls
           </GlitchHeading> */}
 
-          {/* <RadicalGlitchTitle
-            text="HexaFalls"
-            crypticText="ᚺᛖᚲᛊᚨᚠᚨᛚᛚᛊ"
-            primaryColor="#00FFFF"
-            secondaryColor="#FF00FF"
-            fontSize="5rem"
-            freakOutInterval={4000}
-            freakOutDuration={800}
-            className="tracking-wider"
-          /> */}
-
           <div
             className={cn(
               "flex flex-col sm:flex-row gap-4 justify-center items-center",
@@ -244,13 +235,22 @@ const Hero: React.FC = () => {
             <a
               href="#register"
               className={cn(
-                "px-8 py-3 rounded-lg font-medium tracking-wide transition-all",
+                " rounded-lg font-medium tracking-wide transition-all",
                 "bg-green-500 text-green-950 hover:bg-green-400",
                 "shadow-[0_0_15px_rgba(72,187,120,0.5)]",
                 "transform hover:-translate-y-1"
               )}
             >
-              Join the Mystery
+              <RadicalGlitchTitle
+                text="Join the Mystery"
+                // crypticText="ᚺᛖᚲᛊᚨᚠᚨᛚᛚᛊ"
+                primaryColor="#00FFFF"
+                secondaryColor="#FF00FF"
+                fontSize="1rem"
+                freakOutInterval={4000}
+                freakOutDuration={800}
+                className="tracking-wider px-8 py-3"
+              />
             </a>
             <a
               href="#discord"
