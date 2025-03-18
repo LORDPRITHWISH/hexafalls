@@ -28,23 +28,23 @@ const ScheduleEvent: React.FC<ScheduleEventProps> = ({
       )}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="absolute left-0 top-2 w-6 h-6 rounded-full bg-gravity-gold/10 border border-gravity-gold/30 group-hover:bg-gravity-gold/20 transition-colors">
-        <div className="absolute left-1/2 top-1/2 w-2 h-2 rounded-full bg-gravity-gold transform -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute left-0 top-2 w-6 h-6 rounded-full bg-gravity-gold/10 border border-green-400/30 group-hover:bg-green-400/20 transition-colors">
+        <div className="absolute left-1/2 top-1/2 w-2 h-2 rounded-full bg-green-400 transform -translate-x-1/2 -translate-y-1/2"></div>
       </div>
 
-      <div className="absolute left-3 top-10 h-full w-px bg-gravity-gold/20 group-last:hidden"></div>
+      <div className="absolute left-3 top-10 h-full w-px bg-green-400/20 group-last:hidden"></div>
 
       <div className="bg-gravity-navy/40 rounded-xl p-6 border border-white/5 hover:border-gravity-gold/20 transition-all shadow-lg group-hover:shadow-[0_0_15px_rgba(0,0,0,0.3)]">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-3">
-          <span className="text-gravity-gold font-code text-sm mb-2 md:mb-0">
+          <span className="text-green-400 font-code text-sm mb-2 md:mb-0">
             {time}
           </span>
           <span className="text-white/60 text-sm font-medium bg-gravity-dark/50 py-1 px-3 rounded-full">
             {location}
           </span>
         </div>
-        <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-        <p className="text-white/70">{description}</p>
+        <h3 className="text-xl font-semibold text-white mb-2 jolly-lodger-regular-normal">{title}</h3>
+        <p className="text-white/70 TrajanPro">{description}</p>
       </div>
     </div>
   );
@@ -169,43 +169,6 @@ const Schedule: React.FC = () => {
         location: "Cafeteria",
       },
     ],
-    3: [
-      {
-        time: "8:00 AM - 9:00 AM",
-        title: "Breakfast",
-        description:
-          "The final countdown begins. Grab some food and prepare for submission.",
-        location: "Cafeteria",
-      },
-      {
-        time: "11:00 AM - 12:00 PM",
-        title: "Submission Deadline",
-        description:
-          "All projects must be submitted by this time. No exceptions!",
-        location: "Online Platform",
-      },
-      {
-        time: "12:00 PM - 1:30 PM",
-        title: "Lunch & Presentation Prep",
-        description:
-          "Finalize your demo and practice your pitch while enjoying lunch.",
-        location: "Cafeteria & Team Spaces",
-      },
-      {
-        time: "2:00 PM - 4:00 PM",
-        title: "Project Showcase",
-        description:
-          "Present your mysterious creation to judges and fellow participants.",
-        location: "Exhibition Hall",
-      },
-      {
-        time: "4:30 PM - 5:30 PM",
-        title: "Closing Ceremony & Awards",
-        description:
-          "Discover which teams unraveled the mysteries most effectively and win prizes!",
-        location: "Mystery Theater",
-      },
-    ],
   };
 
   return (
@@ -215,10 +178,9 @@ const Schedule: React.FC = () => {
       className="relative py-20 md:py-28 px-4 md:px-10 "
     >
       {/* Background Effects */}
-      <div className="absolute inset-0 b backdrop-blur-[120px] z-0"></div>
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gravity-gold/20 to-transparent"></div>
-      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gravity-gold/20 to-transparent"></div>
-
+      <div className="absolute inset-0 backdrop-blur-[120px] z-0"></div>
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#00ff00]/20 to-transparent"></div>
+      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#00ff00]/20 to-transparent"></div>
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-16">
           <h2
@@ -230,7 +192,7 @@ const Schedule: React.FC = () => {
                 : "opacity-0 translate-y-8"
             )}
           >
-            The Mysterious Timeline
+            04. The Mysterious Timeline
           </h2>
           <p
             className={cn(
@@ -253,14 +215,14 @@ const Schedule: React.FC = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}
         >
-          {[1, 2, 3].map((day) => (
+          {[1, 2].map((day) => (
             <button
               key={day}
               onClick={() => setActiveDay(day)}
               className={cn(
                 "py-3 px-6 rounded-lg font-medium transition-all",
                 activeDay === day
-                  ? "bg-gravity-gold text-gravity-darker shadow-[0_0_15px_rgba(249,183,43,0.5)]"
+                  ? "bg-green-400 text-gravity-darker shadow-[0_0_15px_rgba(249,183,43,0.5)]"
                   : "bg-gravity-navy/50 text-white/80 hover:bg-gravity-gold/20"
               )}
             >
