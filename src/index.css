@@ -263,3 +263,43 @@
     transform: translateY(0);
   }
 }
+
+/* 
+
+/* @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap'); */
+
+/* .glitch-text {
+  font-family: 'Rubik Glitch', sans-serif;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: inline-block;
+  text-shadow:
+    3px 3px 0px #ff0000,  
+    -3px -3px 0px #0000ff, 
+    3px -3px 0px #ff0000,
+    -3px 3px 0px #0000ff;
+  animation: glitch-flicker 1.5s infinite alternate;
+} */
+
+/* @keyframes glitch-flicker {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(0) skewX(0);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateX(2px) skewX(5deg);
+  }
+}
+
+.glitching {
+  text-shadow:
+    5px 5px 0px #ff0000,  
+    -5px -5px 0px #0000ff, 
+    5px -5px 0px #ff0000,
+    -5px 5px 0px #0000ff;
+  transform: skewX(8deg);
+} */
+
+
